@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OPSPilot.Views.SearchPermitsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar Placeholder="Search by code, title or description" SearchCommand="{Binding SearchCommand}" x:Name="SearchBar"
+               SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"
+               Text="{Binding SearchText, Mode=TwoWay}">
+            </SearchBar>
+            <ListView x:Name="lvResults" RowHeight="130" ItemsSource="{Binding Path=WorkPermits }">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <StackLayout VerticalOptions="StartAndExpand" Orientation="Vertical">
+                                    <Label Text="{Binding Code}" VerticalTextAlignment="Center" FontSize="Medium" />
+                                    <Label Text="{Binding Title}" VerticalTextAlignment="Center" FontSize="Small" />
+                                    <Label Text="{Binding Type}" VerticalTextAlignment="Center" FontSize="Small" />                                   
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
